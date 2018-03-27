@@ -16,6 +16,20 @@ require.config({　　　　
 
 require(['jquery'], function($) {
 	console.log('load finish!' + new Date());
+
+	var media = document.createElement('style')
+	media.innerHTML = ".cp{cursor: pointer;}";
+	document.getElementsByTagName('head')[0].appendChild(media);
+	$('body *[href]').addClass('cp');
+	$('body *[href]').on('click', function() {
+		if ($(this).attr('target')) {
+			window.open($(this).attr('href'));
+		} else {
+			window.location.href = $(this).attr('href');
+		}
+	});
+	//href
+
 	$('.header .menu .target').on('mouseenter', function() {
 		$(this).addClass('active on').parent('.item').siblings().find('.target').removeClass('active on');
 	});
@@ -79,6 +93,55 @@ require(['jquery'], function($) {
 	});
 	//网站导航
 })
-// require(['jquery', 'swiper', 'animation', 'swiper-animation'], function($, swiper, animation, swiper_animation) {
-// 	console.log('load finish!' + new Date());
-// })
+//public-js
+
+
+require(['jquery', 'swiper', 'swiper-animation'], function($, swiper, swiper_animation) {
+	console.log('load finish!' + new Date());
+	var mySwiper = new swiper('.banner .swiper-container', {
+		pagination: '.banner .swiper-pagination',
+		nextButton: '.banner .swiper-button-next',
+		prevButton: '.banner .swiper-button-prev',
+		effect: 'fade',
+		autoplay: 3000,
+		onInit: function(swiper) { //Swiper2.x的初始化是onFirstInit
+			swiperAnimateCache(swiper); //隐藏动画元素 
+			swiperAnimate(swiper); //初始化完成开始动画
+		},
+		onSlideChangeEnd: function(swiper) {
+			swiperAnimate(swiper); //每个slide切换结束时也运行当前slide动画
+		},
+	})
+	var mySwiper = new swiper('.notice .swiper-container', {
+		slidesPerView: 3,
+		breakpoints: {
+			//当宽度小于等于320
+			992: {
+				slidesPerView: 1,
+			},
+		},
+		autoplay: 3000,
+	})
+	var mySwiper = new swiper('.index .swiper-container', {
+		slidesPerView: 4,
+		breakpoints: {
+			//当宽度小于等于320
+			1200: {
+				slidesPerView: 3,
+			},
+			992: {
+				slidesPerView: 2,
+			},
+			768: {
+				slidesPerView: 1,
+			},
+		},
+		autoplay: 3000,
+		loop: true,
+		spaceBetween: 30,
+		slidesPerView: 4,
+		speed: 500,
+		centeredSlides: true,
+	})
+
+})
