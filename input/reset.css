@@ -26,7 +26,7 @@ body{background:#fff;color:#636363;font-family:'microsoft yahei',Arial;}
 
 
 .poa{
-position: absolute;
+    position: absolute;
 }
 .pof{
 	position: fixed;
@@ -77,9 +77,6 @@ position: absolute;
     color: #776547;
     font-family: simsun;
 }
-
-
-
 
 
 
