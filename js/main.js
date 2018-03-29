@@ -92,6 +92,18 @@ require(['jquery'], function($) {
 		$('.header .nav-layout .navigation-layout').removeClass('active');
 	});
 	//网站导航
+
+	$('.full').css({
+		height: window.innerHeight,
+		width: window.innerWidth
+	});
+	$(window).on('resize', function() {
+		$('.full').css({
+			height: window.innerHeight,
+			width: window.innerWidth
+		});
+	});
+	// .full
 })
 //public-js
 
